@@ -62,5 +62,4 @@ public class TestModule {
 		List<Module> tab = metiermodule.getlistmodule();
 		assertNotNull(tab.size()>0);
 	}
-
 }
