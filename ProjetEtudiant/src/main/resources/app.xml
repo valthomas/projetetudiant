@@ -17,6 +17,32 @@
 	<context:component-scan base-package="com.etu.Entities" />
 	<context:component-scan base-package="com.etu.DAO" />
 	<context:component-scan base-package="com.etu.Metier" />
+	<!-- ************************************************************************************************ -->
+
+	<!-- ************************************************************************************************ -->
+	
+	<!-- ************************************************************************************************ -->
+	
+	<!-- ************************************************************************************************ -->
+    <beans:bean id="daoEtu" class="com.etu.DAO.ImplDaoEtudiant"></beans:bean>
+  	 <beans:bean id="metierEtudiant" class="com.etu.Metier.ImplMetierEtudiant">
+	 <beans:property name="daoEtudiant" ref="daoEtu"></beans:property>
+	 </beans:bean>
+	 
+	 <beans:bean id="daoExa" class="com.etu.DAO.ImplDaoExamen"></beans:bean>
+  	 <beans:bean id="metierExamen" class="com.etu.Metier.ImplMetierExamen">
+	 <beans:property name="daoExamen" ref="daoExa"></beans:property>
+	 </beans:bean>
+	 
+	 <beans:bean id="daoSal" class="com.etu.DAO.ImplDaoSalle"></beans:bean>
+  	 <beans:bean id="metierSalle" class="com.etu.Metier.ImplMetierSalle">
+	 <beans:property name="daoSalle" ref="daoSal"></beans:property>
+	 </beans:bean> 
+	 
+	 <beans:bean id="daoMat" class="com.etu.DAO.ImplDaoMateriel"></beans:bean>
+  	 <beans:bean id="metierMateriel" class="com.etu.Metier.ImplMetierMateriel">
+	 <beans:property name="daoMateriel" ref="daoMat"></beans:property>
+	 </beans:bean> 
 	
 	<beans:bean id="daoMod" class="com.etu.DAO.ImplDaoModule"></beans:bean>
   	 <beans:bean id="metiermodule" class="com.etu.Metier.ImplMetierModule">
@@ -27,21 +53,13 @@
   	 <beans:bean id="metiersession" class="com.etu.Metier.ImplMetierSession">
 	 <beans:property name="daosession" ref="daoSes"></beans:property>
 	 </beans:bean>
-	<!-- ************************************************************************************************ -->
-	
-	<!-- ************************************************************************************************ -->
-	
-	<!-- ************************************************************************************************ -->
-    <!--  <beans:bean id="daoEtu" class="com.etu.DAO.ImplDaoEtudiant"></beans:bean>
-  	 <beans:bean id="metierClient" class="com.etu.Metier.ImplMetierEtudiant">
-	 <beans:property name="dao" ref="daoEtu"></beans:property>
-	 </beans:bean> -->
+	 
 	<!-- ************************************************************************************************ -->
 	
 	<!-- ************************************************************************************************ -->
 	<beans:bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver"></beans:property>
-		<beans:property name="url" value="jdbc:mysql://localhost/gestionEtudiant"></beans:property>
+		<beans:property name="url" value="jdbc:mysql://localhost/gestionEtudiants"></beans:property>
 		<beans:property name="username" value="root"></beans:property>
 		<beans:property name="password" value=""></beans:property>
 	</beans:bean>
@@ -60,7 +78,7 @@
 	
 	<beans:bean id="EntityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<beans:property name="persistenceUnitManager" ref="PersistenceUnitManager"></beans:property>
-		<beans:property name="persistenceUnitName" value="UP_gestionEtudiant"></beans:property>
+		<beans:property name="persistenceUnitName" value="UP_gestionEtudiants"></beans:property>
 	</beans:bean>
 	<!-- ************************************************************************************************ -->
 	

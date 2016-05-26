@@ -9,7 +9,7 @@ import javax.persistence.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.etu.Entities.Etudiant;
-@Transactional
+
 public class ImplDaoEtudiant implements InterDaoEtudiant {
 
 	@PersistenceContext

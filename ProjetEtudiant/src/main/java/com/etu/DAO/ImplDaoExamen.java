@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.etu.Entities.Etudiant;
 import com.etu.Entities.Examen;
-@Transactional
+
 public class ImplDaoExamen implements InterDaoExamen {
 
 	@PersistenceContext
@@ -59,9 +59,11 @@ public class ImplDaoExamen implements InterDaoExamen {
 		Examen exa = em.find(Examen.class, idExamen);
 		Etudiant etu = em.find(Etudiant.class, idEtudiant);
 		
-	/*	etu.setExamen(exa);
-		em.merge(etu);*/
-		em.merge(exa);
+	etu.getExamen().add(exa);
+	exa.setEtudiant(etu);
+		/*em.merge(etu);
+		em.merge(exa);*/
+		
 		
 	}
 
@@ -69,7 +71,7 @@ public class ImplDaoExamen implements InterDaoExamen {
 	public List<Etudiant> getListEtudiant_Examen(Long idExamen) {
 		// TODO Auto-generated method stub
 		
-		Query req = em.createQuery("select e.listEtudiant from Examen e");
+		Query req = em.createQuery("select e.etudiant from Examen e");
 		return req.getResultList();
 	}
 
