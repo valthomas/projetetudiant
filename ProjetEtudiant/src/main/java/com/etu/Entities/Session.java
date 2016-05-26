@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,7 +33,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Session implements Serializable{
 	
 	//association avec Etudiant
-	@OneToMany(mappedBy="session")
+	@OneToMany(mappedBy="session", fetch=FetchType.EAGER)
 	private List<Etudiant> listeetudiants = new ArrayList<Etudiant>();	
 	
 	public List<Etudiant> getListeetudiants() {
@@ -55,7 +56,7 @@ public class Session implements Serializable{
 	}
 
 	//association avec Module (unidirectionnel)
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="session_module")
 	private List<Module> listemodules = new ArrayList<Module>();
 	
