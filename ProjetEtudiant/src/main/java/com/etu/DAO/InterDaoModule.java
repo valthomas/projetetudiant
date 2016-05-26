@@ -17,7 +17,7 @@ public interface InterDaoModule {
 	
 	public Module addmodule(Module m);
 	public void deletemodule(Long idModule);
-	public Module updatemodule(Long idModule);
+	public Module updatemodule(Module m);
 	public Module getmodule(Long idModule);
 	public List<Module> getlistmodule();
 

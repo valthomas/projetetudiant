@@ -81,19 +81,28 @@ private EntityManager em;
 	@Override
 	public void addmodtosess(Long idModule, Long idSession) {
 		// TODO Auto-generated method stub
+		Module m = em.find(Module.class, idModule);
+		Session s = em.find(Session.class, idSession);
+		s.getListemodules().add(m);
 		
 	}
 
 	@Override
 	public void deletemodtosess(Long idModule, Long idSession) {
 		// TODO Auto-generated method stub
+		Session s = em.find(Session.class, idSession);
+		Module m = em.find(Module.class, idModule);
+		s.getListemodules().remove(m);
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Module> getlistemodsess(Long idSession) {
 		// TODO Auto-generated method stub
-		return null;
+		Query query = em.createQuery("select s.getListemodules from Session s where s.idSession= :x");
+		query.setParameter("x", idSession);
+		return query.getResultList();
 	}
 
 }

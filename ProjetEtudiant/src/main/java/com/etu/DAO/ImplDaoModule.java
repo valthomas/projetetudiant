@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import com.etu.Entities.Module;
 
@@ -15,31 +16,38 @@ public class ImplDaoModule implements InterDaoModule{
 	@Override
 	public Module addmodule(Module m) {
 		// TODO Auto-generated method stub
-		return null;
+		em.persist(m);
+		return m;
 	}
 
 	@Override
 	public void deletemodule(Long idModule) {
 		// TODO Auto-generated method stub
+		Module m = em.find(Module.class,idModule);
+		em.remove(m);
 		
 	}
 
 	@Override
-	public Module updatemodule(Long idModule) {
+	public Module updatemodule(Module m) {
 		// TODO Auto-generated method stub
-		return null;
+		em.merge(m);
+		return m;
 	}
 
 	@Override
 	public Module getmodule(Long idModule) {
 		// TODO Auto-generated method stub
-		return null;
+		Module m = em.find(Module.class,idModule);
+		return m;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Module> getlistmodule() {
 		// TODO Auto-generated method stub
-		return null;
+		Query query = em.createQuery("from Module m");
+		return query.getResultList();
 	}
 
 }
