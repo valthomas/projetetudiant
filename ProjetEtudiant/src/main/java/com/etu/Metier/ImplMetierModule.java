@@ -23,12 +23,14 @@ public class ImplMetierModule implements InterMetierModule{
 	@Override
 	public Module addmodule(Module m) {
 		// TODO Auto-generated method stub
+		LOG.info("*****************************methode ajouter*****************************");
 		return daomodule.addmodule(m);
 	}
 
 	@Override
 	public void deletemodule(Long idModule) {
 		// TODO Auto-generated method stub
+		LOG.info("*****************************methode supprimer*****************************");
 		daomodule.deletemodule(idModule);
 		
 	}
@@ -36,18 +38,21 @@ public class ImplMetierModule implements InterMetierModule{
 	@Override
 	public Module updatemodule(Module m) {
 		// TODO Auto-generated method stub
+		LOG.info("*****************************methode modifier*****************************");
 		return daomodule.updatemodule(m);
 	}
 
 	@Override
 	public Module getmodule(Long idModule) {
 		// TODO Auto-generated method stub
+		LOG.info("*****************************methode obtenir objet*****************************");
 		return daomodule.getmodule(idModule);
 	}
 
 	@Override
 	public List<Module> getlistmodule() {
 		// TODO Auto-generated method stub
+		LOG.info("*****************************methode liste*****************************");
 		return daomodule.getlistmodule();
 	}
 

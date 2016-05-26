@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +28,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Salle implements Serializable{
 	
 	//association avec Session
-	@OneToMany(mappedBy="salle")
+	@OneToMany(mappedBy="salle", fetch=FetchType.EAGER)
 	private List<Session> listesessions = new ArrayList<Session>();
 	
 	public List<Session> getListesessions() {

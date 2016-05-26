@@ -100,7 +100,7 @@ private EntityManager em;
 	@Override
 	public List<Module> getlistemodsess(Long idSession) {
 		// TODO Auto-generated method stub
-		Query query = em.createQuery("select s.getListemodules from Session s where s.idSession= :x");
+		Query query = em.createQuery("select s.listemodules from Session s where s.idSession= :x");
 		query.setParameter("x", idSession);
 		return query.getResultList();
 	}
