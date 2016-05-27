@@ -14,6 +14,7 @@ public interface InterDaoSalle {
 	public Salle setSalle(Salle salle,String adresseSalle, Integer capacite,String nomSalle);
 	/** methode modifer la salle. Elle prend en argument l'id de la salle**/
 	public Salle DeleteSalle(Long idSalle);
+	public Salle getSalle(Long idSalle);
 	public Salle addSalleToSession(Long idSalle, Long idSession);
 	public Salle deleteSalleToSession(Long idSalle, Long idSession);
 	public List<Salle> getAllSalle();

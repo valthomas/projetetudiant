@@ -78,7 +78,7 @@
 	
 	<beans:bean id="EntityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<beans:property name="persistenceUnitManager" ref="PersistenceUnitManager"></beans:property>
-		<beans:property name="persistenceUnitName" value="UP_gestionEtudiants"></beans:property>
+		<beans:property name="persistenceUnitName" value="UP_gestionEtudiant"></beans:property>
 	</beans:bean>
 	<!-- ************************************************************************************************ -->
 	

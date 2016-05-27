@@ -48,6 +48,7 @@ public class ImplDaoSalle implements  InterDaoSalle{
 		Salle s= em.find(Salle.class,idSalle);
 		Session session= em.find(Session.class,idSession);
 		s.getListesessions().add(session);
+		session.setSalle(s);
 		em.merge(s);
 		em.merge(session);
 		log.info(s.getNomSalle()+" a ete ajoute a session");
@@ -69,6 +70,12 @@ public class ImplDaoSalle implements  InterDaoSalle{
 	public List<Salle> getAllSalle() {
 		Query query= em.createQuery("select s from Salle s");
 		return query.getResultList();
+	}
+
+	@Override
+	public Salle getSalle(Long idSalle) {
+		Salle salle= em.find(Salle.class, idSalle);
+		return salle;
 	}
 
 	

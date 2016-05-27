@@ -62,7 +62,7 @@ public class ImplDaoMateriel implements InterDaoMateriel{
 	public Materiel addMaterielToEtudiant(Long idMateriel, Long idEtudiant) {
 		Materiel mat = em.find(Materiel.class,idMateriel);
 		Etudiant e= em.find(Etudiant.class, idEtudiant);
-		e.getListMateriel().add(mat);
+		e.getMateriel().add(mat);
 		em.merge(e);
 		log.info(mat.getNomMateriel()+" a ete ajoute a l etudiant");
 		return mat;
@@ -71,7 +71,7 @@ public class ImplDaoMateriel implements InterDaoMateriel{
 	@Override
 	public List<Materiel> getAllMaterielOfOneEtudiant(Long idEtudiant) {
 		Etudiant e= em.find(Etudiant.class, idEtudiant);
-		List<Materiel> list=e.getListMateriel();
+		List<Materiel> list=e.getMateriel();
 		return list;
 	}
 

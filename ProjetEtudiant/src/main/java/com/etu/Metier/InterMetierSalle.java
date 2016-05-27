@@ -15,4 +15,5 @@ public interface InterMetierSalle {
 	public Salle addSalleToSession(Long idSalle, Long idSession);
 	public Salle deleteSalleToSession(Long idSalle, Long idSession);
 	public List<Salle> getAllSalle();
+	public Salle getSalle(Long idSalle);
 }

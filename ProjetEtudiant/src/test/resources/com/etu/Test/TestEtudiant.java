@@ -28,7 +28,7 @@ public class TestEtudiant {
 	public static void tearDownAfterClass() throws Exception {
 		context.close();
 	}
-	Etudiant e1 = new Etudiant("Mfoulou", "Tatiana", new Date(), "06.47.47.47.47", "tatiana@yahoo", "quelque part à Paris", "Math");
+	/*Etudiant e1 = new Etudiant("Mfoulou", "Tatiana", new Date(), "06.47.47.47.47", "tatiana@yahoo", "quelque part à Paris", "Math");
 	Etudiant e2 = new Etudiant("Milou", "Tintin", new Date(), "06.48.48.48.48", "tintinmilou@yahoo", "quelque part à Bruxelle", "Litterature");
 	Etudiant e3 = new Etudiant("Perte", "Detemps", new Date(), "06.00.47.00.47", "perte2temps@yahoo", "quelque part à Marseille", "Musique");
 	Etudiant e4 = new Etudiant("Castle", "serie", new Date(), "06.14.69.14.49", "CastleSere@yahoo", "quelque part à NewYork", "Math");
@@ -71,6 +71,6 @@ public class TestEtudiant {
 	public final void testGetListEtudiant() {
 		List<Etudiant> le = metierEtudiant.getListEtudiant();
 		assertTrue(le.size()>0);
-	}
+	}*/
 
 }

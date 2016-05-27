@@ -57,6 +57,12 @@ public class ImplMetierSalle implements InterMetierSalle {
 		// TODO Auto-generated method stub
 		return daoSalle.getAllSalle();
 	}
+
+	@Override
+	public Salle getSalle(Long idSalle) {
+		// TODO Auto-generated method stub
+		return daoSalle.getSalle(idSalle);
+	}
 	
 	
 }

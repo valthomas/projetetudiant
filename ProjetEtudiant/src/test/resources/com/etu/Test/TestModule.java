@@ -28,24 +28,30 @@ public class TestModule {
 		context.close();
 	}
 
+	Module m1 = new Module("nom1", 2, "desc1");
+	Module m2 = new Module("nom2", 2, "desc2");
+	Module m3 = new Module("nom3", 2, "desc3");
 	@Test
 	public void testAddmodule() {
-		Module m = new Module("nom2", 2, "desc2");
+		Module m = new Module("nom4", 2, "desc4");
 		metiermodule.addmodule(m);
+		metiermodule.addmodule(m1);
+		metiermodule.addmodule(m2);
+		metiermodule.addmodule(m3);
 		assertNotNull(m.getIdModule());
 	}
 
 	@Test
 	public void testDeletemodule() {
 		List<Module> tab1 = metiermodule.getlistmodule();
-		metiermodule.deletemodule(1L);
+		metiermodule.deletemodule(2L);
 		List<Module> tab2 = metiermodule.getlistmodule();
 		assertNotNull(tab1.size()==tab2.size()+1);
 	}
 
 	@Test
 	public void testUpdatemodule() {
-		Module m = metiermodule.getmodule(1L);
+		Module m = metiermodule.getmodule(3L);
 		m.setNomModule("newnom");
 		metiermodule.updatemodule(m);
 		assertNotNull(m.getNomModule().equals("newnom"));
@@ -53,8 +59,8 @@ public class TestModule {
 
 	@Test
 	public void testGetmodule() {
-		Module m = metiermodule.getmodule(1L);
-		assertNotNull(m.getIdModule().equals(1L));
+		Module m = metiermodule.getmodule(3L);
+		assertNotNull(m.getIdModule().equals(3L));
 	}
 
 	@Test
