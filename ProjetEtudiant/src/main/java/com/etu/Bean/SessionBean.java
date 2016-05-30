@@ -1,5 +1,6 @@
 package com.etu.Bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,10 +14,11 @@ import com.etu.Entities.Module;
 import com.etu.Entities.Session;
 import com.etu.Metier.InterMetierSession;
 
+@SuppressWarnings("serial")
 @Controller
 @ManagedBean(name="sessionbean")
 @RequestScoped
-public class SessionBean {
+public class SessionBean implements Serializable{
 	
 	private InterMetierSession metiersession;
 	

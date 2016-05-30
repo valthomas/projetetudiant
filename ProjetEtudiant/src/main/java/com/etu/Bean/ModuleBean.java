@@ -1,21 +1,25 @@
 package com.etu.Bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
 import com.etu.Entities.Module;
 import com.etu.Metier.InterMetierModule;
 
+@SuppressWarnings("serial")
 @Controller
-@ManagedBean(name="modulebean")
+@Component("moduleBean")
 @RequestScoped
-public class ModuleBean {
+public class ModuleBean implements Serializable{
 	
+	@Autowired
 	private InterMetierModule metiermodule;
 	
 	//attributs necessaires
@@ -53,9 +57,8 @@ public class ModuleBean {
 	}
 	
 	//methodes
-	public Module addmod(){
+	public void addmod(){
 		metiermodule.addmodule(m);
-		return m;
 	}
 	
 	public void supmod(){

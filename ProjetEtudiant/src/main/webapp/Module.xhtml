@@ -5,14 +5,40 @@
      xmlns:h="http://java.sun.com/jsf/html"
      xmlns:ui="http://java.sun.com/jsf/facelets"
      xmlns:p="http://primefaces.org/ui">
-<head>
+<h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Insert title here</title>
-</head>
-<body>
+</h:head>
+<h:body>
 <h:form>
-<h:outputText value="nom du module"></h:outputText><br/>
-<h:inputText value="#{modulebean.}"></h:inputText>
+<h:panelGrid columns="14" cellpadding="2">
+<h:outputText value="nom du module : "></h:outputText>
+<p:inputText value="#{moduleBean.m.nomModule}"></p:inputText><br/>
+<h:outputText value="description du module : "></h:outputText>
+<p:inputText value="#{moduleBean.m.descriptionModule}"></p:inputText><br/>
+<h:outputText value="duree du module : "></h:outputText>
+<p:inputText value="#{moduleBean.m.dureeModule}"></p:inputText><br/>
+<p:commandButton value="ajouter" actionListener="#{moduleBean.addmod()}"></p:commandButton><br/><br/>
+</h:panelGrid>
+
+<p:dataTable var="Module" value="#{moduleBean.listmod()}">
+    <p:column headerText="Id">
+        <h:outputText value="#{Module.idModule}" />
+    </p:column>
+ 
+    <p:column headerText="Nom">
+        <h:outputText value="#{Module.nomModule}" />
+    </p:column>
+ 
+    <p:column headerText="Description">
+        <h:outputText value="#{Module.descriptionModule}" />
+    </p:column>
+ 
+    <p:column headerText="Duree">
+        <h:outputText value="#{Module.dureeModule}" />
+    </p:column>
+</p:dataTable>
+
 </h:form>
-</body>
+</h:body>
 </html>
