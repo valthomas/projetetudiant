@@ -8,6 +8,7 @@ import javax.faces.bean.RequestScoped;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
 import com.etu.Entities.Etudiant;
@@ -63,12 +64,12 @@ public class EtudiantBean {
 		metier.addEtudiant(e);
 	}
 	
-	public void updateEtudiant(){
-		metier.updateEtudiant(idEtudiant);
+	public void updateEtudiant(Long idet){
+		metier.updateEtudiant(idet);
 	}
 	
-	public void delEtudiant(){
-		metier.delEtudiant(idEtudiant);
+	public void delEtudiant(Long idet){
+		metier.delEtudiant(idet);
 	}
 	public Etudiant getEtudiant(){
 		return metier.getEtudiant(idEtudiant);

@@ -1,11 +1,223 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:p="http://primefaces.org/ui"
+xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
-</head>
-<body>
+<title>Etudiant</title>
+</h:head>
+<h:body>
 
-</body>
+<!-- ******************** Menu ******************** -->
+
+<p:stack icon="C:\Users\INTI-0253\Desktop\stack.png" expanded="true">
+
+    <p:menuitem value="Salle" icon="C:\Users\INTI-0253\Desktop\Salle.jpg" outcome="Salle"/>
+        <p:menuitem value="Module" icon="C:\Users\INTI-0253\Desktop\Module.jpg" outcome="Module"/>
+        <p:menuitem value="Examen" icon="C:\Users\INTI-0253\Desktop\Examen.jpg" outcome="Examen"/>
+        <p:menuitem value="Home" icon="C:\Users\INTI-0253\Desktop\Home_nature.jpg" outcome="Home"/>
+         <p:menuitem value="Etudiant" icon="C:\Users\INTI-0253\Desktop\Etudiant.jpg" outcome="Etudiant"/>
+    
+</p:stack>
+
+<!-- ******************** Accordeon ******************** -->
+
+<h:form id="form">
+
+    <p:growl id="msgs" showDetail="true" />
+ 
+    <p:accordionPanel multiple="true">
+    
+    
+   <!-- ******************** consulter la liste des etudiants ******************** --> 
+    
+        <p:tab title="Consulter La liste des etudiants">
+            <h:panelGrid columns="2" cellpadding="10">
+
+<p:growl id="msgs" showDetail="true"/>
+ 
+   <p:dataTable id="etus" var="etu" value="#{etudiantBean.getListEtu()}" editable="true" style="margin-bottom:20px" rowKey="#{etu.idEtudiant}">
+       <f:facet name="header">
+
+           Liste d'étudiants
+           
+        <p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="ui-icon-calculator" />
+        <p:columnToggler datasource="etus" trigger="toggler" />
+
+       </f:facet>
+ 
+
+       <p:column headerText="Id">
+       <h:outputText value="#{etu.idEtudiant}" />
+       </p:column>               
+              
+       <p:ajax event="rowEdit" listener="#{etudiantBean.updateEtudiant(etu.idEtudiant)}" update=":form:msgs"/>
+      <p:ajax event="rowEditCancel" listener="#{etudiantBean.onRowCancel}" update=":form:msgs" /> 
+ 
+    
+       <p:column headerText="Nom">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{etu.nomEtudiant}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{etu.nomEtudiant}" style="width:100%" label="Nom"/></f:facet>
+           </p:cellEditor>
+       </p:column>
+ 
+       <p:column headerText="Prénom">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{etu.prenomEtudiant}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{etu.prenomEtudiant}" style="width:100%" label="Prenom"/></f:facet>
+           </p:cellEditor>
+       </p:column>
+ 
+       <p:column headerText="Date de naissance">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{etu.dateNaissanceEtudiant}" /></f:facet>
+               <f:facet name="input">
+                <p:calendar value="#{etu.dateNaissanceEtudiant}" label="Naissance" required="true"></p:calendar>
+             </f:facet>
+           </p:cellEditor>
+       </p:column>
+       
+              <p:column headerText="Téléphone">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{etu.telEtudiant}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{etu.telEtudiant}" style="width:100%" label="Telephone"/></f:facet>
+           </p:cellEditor>
+       </p:column>
+       
+              <p:column headerText="Mail">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{etu.mailEtudiant}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{etu.mailEtudiant}" style="width:100%" label="Mail"/></f:facet>
+           </p:cellEditor>
+       </p:column>
+       
+              <p:column headerText="Adresse">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{etu.adresseEtudiant}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{etu.adresseEtudiant}" style="width:100%" label="Adresse"/></f:facet>
+           </p:cellEditor>
+       </p:column>
+       
+              <p:column headerText="Spécialité">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{etu.specialiteEtudian}" /></f:facet>
+               <f:facet name="input"><p:inputText  value="#{etu.specialiteEtudian}" style="width:100%" label="Specialite"/></f:facet>
+           </p:cellEditor>
+       </p:column>
+ 
+	
+            <p:column headerText="Supprimer">               
+            <p:commandButton action="#{etudiantBean.delEtudiant(etu.idEtudiant)}" ajax="true" update="etus" icon="ui-icon-close"></p:commandButton>
+			</p:column>
+       		
+       		<p:column headerText="Modifier">               
+            <p:commandButton action="#{etudiantBean.updateEtudiant(etu.idEtudiant)}" ajax="true" update="etus" icon="fa fa-fw fa-edit"></p:commandButton>
+			</p:column>
+       <p:column style="width:32px">
+       
+       
+           <p:rowEditor />
+       </p:column>
+   </p:dataTable>
+
+            </h:panelGrid>
+        </p:tab>
+        
+        
+  <!-- ******************** FIN consulter la liste des etudiants ******************** -->      
+        
+        
+        <p:tab title="Ajouter un etudiant">
+            <h:panelGrid columns="2" cellpadding="10">
+
+<!-- ******************** ajouter un etudiant 2 ******************** -->
+    <p:panel id="panel" header="Nouvel Utilisateur">
+ 
+        <p:messages id="msgs" />
+ 
+        <h:panelGrid columns="3" cellpadding="5">
+            <p:outputLabel for="firstname" value="Nom:" />
+            <p:inputText id="firstname" value="#{etudiantBean.e.nomEtudiant}" required="true" label="Firstname">
+                <f:validateLength minimum="2" />
+            </p:inputText>
+            <p:message for="firstname" display="icon" />
+ 
+            <p:outputLabel for="lastname" value="Prénom:" />
+            <p:inputText id="lastname"  value="#{etudiantBean.e.prenomEtudiant}" label="Lastname" required="true">
+                <f:validateLength minimum="2" />
+               <p:ajax update="msgLastname" event="keyup" />
+            </p:inputText>
+            <p:message for="lastname" id="msgLastname" display="icon" />
+            
+           <p:outputLabel for="dateNaissanceEtudiant" value="dateNaissanceEtudiant:" />
+            <p:calendar id="dateNaissanceEtudiant"  value="#{etudiantBean.e.dateNaissanceEtudiant}" label="dateNaissanceEtudiant" required="true">
+            <f:validateLength minimum="2" />
+            <p:ajax update="msgDateNaissanceEtudiant" event="keyup" />
+            </p:calendar>
+            <p:message for="dateNaissanceEtudiant" id="msgDateNaissanceEtudiant" display="icon" />
+            
+            <p:outputLabel for="telEtudiant" value="telEtudiant:" />
+            <p:inputText id="telEtudiant"  value="#{etudiantBean.e.telEtudiant}" label="telEtudiant" required="true">
+                <f:validateLength minimum="2" />
+               <p:ajax update="msgtelEtudiant" event="keyup" />
+            </p:inputText>
+            <p:message for="telEtudiant" id="msgtelEtudiant" display="icon" />
+            
+                        <p:outputLabel for="mailEtudiant" value="mailEtudiant:" />
+            <p:inputText id="mailEtudiant"  value="#{etudiantBean.e.mailEtudiant}" label="mailEtudiant" required="true">
+                <f:validateLength minimum="2" />
+               <p:ajax update="msgMailEtudiant" event="keyup" />
+            </p:inputText>
+            <p:message for="mailEtudiant" id="msgMailEtudiant" display="icon" />
+            
+                        <p:outputLabel for="adresseEtudiant" value="adresseEtudiant:" />
+            <p:inputText id="adresseEtudiant"  value="#{etudiantBean.e.adresseEtudiant}" label="adresseEtudiant" required="true">
+                <f:validateLength minimum="2" />
+               <p:ajax update="msgAdresseEtudiant" event="keyup" />
+            </p:inputText>
+            <p:message for="adresseEtudiant" id="msgAdresseEtudiant" display="icon" />
+            
+                        <p:outputLabel for="specialiteEtudian" value="specialiteEtudian:" />
+            <p:inputText id="specialiteEtudian"  value="#{etudiantBean.e.specialiteEtudian}" label="specialiteEtudian" required="true">
+                <f:validateLength minimum="2" />
+               <p:ajax update="msgSpecialiteEtudian" event="keyup" />
+            </p:inputText>
+            <p:message for="specialiteEtudian" id="msgSpecialiteEtudian" display="icon" />             
+              
+         </h:panelGrid>
+         
+             
+ 
+        <p:commandButton value="Sauvegarder" update="panel"  actionListener="#{etudiantBean.saveEtudiant()}" icon="ui-icon-check" />
+    </p:panel>
+
+   <!-- ******************** FIN ajouter un etudiant 2 ******************** --> 
+            </h:panelGrid>
+        </p:tab>
+        
+        
+        
+        
+        <p:tab title="Faire autre chose">
+            <h:panelGrid columns="2" cellpadding="10">
+
+            </h:panelGrid>
+        </p:tab>
+    </p:accordionPanel>
+    
+    
+    
+    
+
+</h:form>
+<br/>
+
+ 
+ 
+ 
+<h:messages></h:messages> <!-- afficher les erreurs plus sur la console -->
+</h:body>
 </html>
